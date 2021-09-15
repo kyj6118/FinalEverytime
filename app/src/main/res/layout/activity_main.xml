@@ -49,6 +49,13 @@
             tools:layout_editor_absoluteX="155dp"
             tools:layout_editor_absoluteY="423dp" />
 
+        <com.google.android.gms.common.SignInButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/radius"
+            android:layout_margin="5dp"
+            android:id="@+id/Googlebtn"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

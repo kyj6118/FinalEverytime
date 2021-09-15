@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
 
                         Toast.makeText(this,"Success Login",Toast.LENGTH_LONG).show()
-                        // Sign in success, update UI with the signed-in user's information
+                        // Sign in success, update UI with the signed-in user's informationxt
 
                     } else {
                         Toast.makeText(this,"Fail Login",Toast.LENGTH_LONG).show()
