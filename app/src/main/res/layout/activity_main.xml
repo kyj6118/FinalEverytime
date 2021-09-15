@@ -48,6 +48,7 @@
             android:text="Register"
             tools:layout_editor_absoluteX="155dp"
             tools:layout_editor_absoluteY="423dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
