@@ -2,30 +2,49 @@ package com.example.afinal
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.afinal.VO.user
 import com.example.afinal.databinding.ActivityJoinBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class JoinActivity : AppCompatActivity() {
 
+
+
+
     private lateinit var auth: FirebaseAuth
     private lateinit var binding : ActivityJoinBinding
+    var firestore : FirebaseFirestore? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+
+        data class User(val username: String? = null, val email: String? = null) {
+        }
+
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_join)
         auth = Firebase.auth
+        firestore = FirebaseFirestore.getInstance()
+        val db = Firebase.firestore
+
+
 
         binding.Joinbtn.setOnClickListener{
 
@@ -34,6 +53,7 @@ class JoinActivity : AppCompatActivity() {
             val email = binding.EmailArea.text.toString()
             val password1 = binding.PasswordArea1.text.toString()
             val password2 = binding.PasswordArea2.text.toString()
+            val name = binding.nameArea.text.toString()
             val spinner = findViewById<Spinner>(R.id.Uni)
 
             spinner.adapter=ArrayAdapter.createFromResource(this,R.array.university,android.R.layout.simple_dropdown_item_1line)
@@ -41,6 +61,11 @@ class JoinActivity : AppCompatActivity() {
 
             if(email.isEmpty()){
                 Toast.makeText(this,"Enter your Email",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+
+            }
+            if(name.isEmpty()){
+                Toast.makeText(this,"Enter your name",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
 
             }
@@ -65,8 +90,19 @@ class JoinActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password1)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            //Toast.makeText(this,"success",Toast.LENGTH_LONG).show()
+
+                            val user = hashMapOf(
+                                "id" to email,
+                                "name" to name,
+                                "uni" to "no"
+                            )
+
+                            db.collection("register").document(email)
+                                .set(user)
+                                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+
+
                             Toast.makeText(this,"Success Check your email",Toast.LENGTH_LONG).show()
 
                             val intent = Intent(this,MainActivity::class.java)
@@ -75,8 +111,10 @@ class JoinActivity : AppCompatActivity() {
 
                         } else {
                             //Toast.makeText(this,"fail",Toast.LENGTH_LONG).show()
+
                             Toast.makeText(this,"fail",Toast.LENGTH_LONG).show()
                         }
+
                     }
 
 
@@ -86,9 +124,8 @@ class JoinActivity : AppCompatActivity() {
             }
 
 
-
-
         }
+
 
 
 
