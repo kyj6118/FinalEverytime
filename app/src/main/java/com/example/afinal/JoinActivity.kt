@@ -24,10 +24,9 @@ class JoinActivity : AppCompatActivity() {
 
 
 
-    private lateinit var auth: FirebaseAuth
     private lateinit var binding : ActivityJoinBinding
     var firestore : FirebaseFirestore? = null
-
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +34,6 @@ class JoinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_join)
 
 
-        data class User(val username: String? = null, val email: String? = null) {
-        }
 
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_join)
@@ -94,7 +91,8 @@ class JoinActivity : AppCompatActivity() {
                             val user = hashMapOf(
                                 "id" to email,
                                 "name" to name,
-                                "uni" to "no"
+                                "uni" to "no",
+                                "password" to password1
                             )
 
                             db.collection("register").document(email)
