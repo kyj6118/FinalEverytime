@@ -9,6 +9,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.afinal.VO.FBAuth
 import com.example.afinal.VO.user
 import com.example.afinal.databinding.ActivityJoinBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -51,6 +52,7 @@ class JoinActivity : AppCompatActivity() {
             val password1 = binding.PasswordArea1.text.toString()
             val password2 = binding.PasswordArea2.text.toString()
             val name = binding.nameArea.text.toString()
+            val uid= FBAuth.getUid()
             val spinner = findViewById<Spinner>(R.id.Uni)
 
             spinner.adapter=ArrayAdapter.createFromResource(this,R.array.university,android.R.layout.simple_dropdown_item_1line)
@@ -92,7 +94,8 @@ class JoinActivity : AppCompatActivity() {
                                 "id" to email,
                                 "name" to name,
                                 "uni" to "no",
-                                "password" to password1
+                                "password" to password1,
+                                 "uid" to uid
                             )
 
                             db.collection("register").document(email)

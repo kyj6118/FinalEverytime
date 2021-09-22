@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragmants.boardFragment">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/FreeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Free Board"
+            android:textColor="@color/black"
+            android:textSize="50dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="120dp"
+            tools:ignore="MissingConstraints" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,5 +107,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
 </layout>
