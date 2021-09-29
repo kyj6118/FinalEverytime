@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.afinal.R
 import com.example.afinal.VO.board
 
-class FreeBoardListAdapter(val boardList:ArrayList<board>
+class FreeBoardListAdapter(val boardList:MutableList<board>
 ): BaseAdapter(){
 
     override fun getCount(): Int {
@@ -22,27 +22,34 @@ class FreeBoardListAdapter(val boardList:ArrayList<board>
     }
 
     override fun getItemId(position: Int): Long {
-        return 0
+        return position.toLong()
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-        var view :View  = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent, false)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?):
 
 
-        val title = view.findViewById<TextView>(R.id.titleArea)
-        val content = view.findViewById<TextView>(R.id.contentArea)
-        val time = view.findViewById<TextView>(R.id.timeArea)
-        val name = view.findViewById<TextView>(R.id.nameArea)
+            View {
+
+        var view = convertView
+        if(view == null){
+
+            view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent, false)
+        }
+
+
+        val title = view?.findViewById<TextView>(R.id.titleArea)
+        val content = view?.findViewById<TextView>(R.id.contentArea)
+        val time = view?.findViewById<TextView>(R.id.timeArea)
+        val name = view?.findViewById<TextView>(R.id.nameArea)
 
         val board = boardList[position]
 
-        title.text=board.title
-        content.text=board.contents
-        time.text=board.time
-        name.text=board.email
+        title!!.text=board.title
+        content!!.text=board.contents
+        time!!.text=board.time
+        name!!.text=board.email
 
-        return view
+        return view!!
 
 
     }

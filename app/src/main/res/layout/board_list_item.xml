@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="85dp"
     android:orientation="vertical"
     >
 
@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/titleArea"
         android:text="title"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/contentArea"
         android:text="context"
-        android:textSize="30dp"
+        android:textSize="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="@color/black"

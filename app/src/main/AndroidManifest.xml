@@ -3,6 +3,7 @@
     package="com.example.afinal">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,12 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
-        <activity android:name=".board.freeActivity"></activity>
-        <activity android:name=".board.FriBoard" />
+        <activity android:name=".board.FreeBoardInsideActivity"></activity>
         <activity android:name=".board.FreeBoardActivity" />
         <activity android:name=".board.BoardWriteActivity" />
-        <activity android:name=".googleLogin" />
-        <activity android:name=".MainActivity2" />
+        <activity android:name=".googleLogin" />>
         <activity android:name=".MainPageActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
