@@ -10,10 +10,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import com.bokchi.mysolelife.comment.CommentLVAdapter
 import com.bumptech.glide.Glide
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
 import com.example.afinal.VO.board
+import com.example.afinal.VO.commentVO
 import com.example.afinal.databinding.ActivityFreeBoardInsideBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +40,11 @@ class FreeBoardInsideActivity : AppCompatActivity() {
     var firestore : FirebaseFirestore? = null
     private lateinit var auth: FirebaseAuth
 
+    private val commentList= mutableListOf<commentVO>()
+
+    private lateinit var commentLVAdapter: CommentLVAdapter
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,13 +59,16 @@ class FreeBoardInsideActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
 
 
-
-
-
         // 두번째 방법
         key = intent.getStringExtra("key").toString()
         boardData(key.toString())
         getImageData(key.toString())
+        getCommentData(key.toString())
+
+
+        binding.commentBtn.setOnClickListener{
+            insertComment(key)
+        }
 
 
 
@@ -69,11 +79,78 @@ class FreeBoardInsideActivity : AppCompatActivity() {
         }
 
 
+            }
 
 
+    fun getCommentData(key: String) {
+
+        commentLVAdapter = CommentLVAdapter(commentList)
+        binding.CommentListView.adapter = commentLVAdapter
+
+        val db = Firebase.firestore
+        val comRef = db.collection("comment").document(key)
+
+
+        commentList.clear()
+
+        comRef
+            .get()
+            .addOnSuccessListener { document->
+                if(document != null)
+
+                {
+                    Log.d(TAG, "DocumentComment data: ${document.data}")
+
+
+                    commentList.add(
+                        commentVO(
+                            document["comdata"].toString(),
+                            document["comtime"].toString(),
+                            document["comname"].toString()
+                        )
+                    )
+
+
+                }
+                commentList.reverse()
+                commentLVAdapter.notifyDataSetChanged()
 
 
             }
+
+
+    }
+
+        fun insertComment(key: String) {
+            //comment
+            // -board key
+            //comment key
+            //commentData
+            val db = Firebase.firestore
+            val ComRef = db.collection("comment").document(key)
+
+            db.collection("comment")
+                .document(key)
+                .set(
+                    commentVO(
+                        binding.commentArea.text.toString(),
+                        FBAuth.getTime(),
+                        FBAuth.getemail()
+
+
+                    )
+
+                )
+
+            Toast.makeText(this, "Success write comment ", Toast.LENGTH_LONG).show()
+            binding.commentArea.setText("")
+
+
+        }
+
+
+
+    //게시글 파이어스토어에서 받아오기
     private fun boardData(key: String) {
         val db = Firebase.firestore
         val docRef = db.collection("board").document(key)
@@ -95,6 +172,8 @@ class FreeBoardInsideActivity : AppCompatActivity() {
                     val myUid = FBAuth.getUid()
                     val writeUid = document.get("id").toString()
 
+
+                    //자신의 게시글이 아니면 수정 삭제 불가능
                     if(myUid.equals(writeUid)){
                         binding.boardSettingIcon.isVisible = true
                     }
@@ -165,6 +244,8 @@ class FreeBoardInsideActivity : AppCompatActivity() {
                     .into(imageViewFromFB)
 
             } else {
+
+                binding.getImageArea.isVisible = false
 
             }
         })
