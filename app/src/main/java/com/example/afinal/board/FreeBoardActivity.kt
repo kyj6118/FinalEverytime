@@ -54,10 +54,6 @@ class FreeBoardActivity : AppCompatActivity() {
         binding.boardListView.setOnItemClickListener { parent, view, position, id ->
 
             val intent = Intent(this, FreeBoardInsideActivity::class.java)
-            intent.putExtra("title", boardList[position].title)
-            intent.putExtra("time", boardList[position].time)
-            intent.putExtra("name", boardList[position].email)
-            intent.putExtra("content", boardList[position].contents)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }

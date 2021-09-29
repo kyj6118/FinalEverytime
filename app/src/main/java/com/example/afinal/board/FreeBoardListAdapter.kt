@@ -1,12 +1,15 @@
 package com.example.afinal.board
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.afinal.R
+import com.example.afinal.VO.FBAuth
 import com.example.afinal.VO.board
 
 class FreeBoardListAdapter(val boardList:MutableList<board>
@@ -36,11 +39,18 @@ class FreeBoardListAdapter(val boardList:MutableList<board>
             view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent, false)
         }
 
+        val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
 
         val title = view?.findViewById<TextView>(R.id.titleArea)
         val content = view?.findViewById<TextView>(R.id.contentArea)
         val time = view?.findViewById<TextView>(R.id.timeArea)
         val name = view?.findViewById<TextView>(R.id.nameArea)
+
+        if(boardList[position].email.equals(FBAuth.getemail())){
+
+            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#cbbcec"))
+        }
+
 
         val board = boardList[position]
 
