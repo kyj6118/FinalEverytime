@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.bokchi.mysolelife.comment.CommentLVAdapter
+import com.bokchi.mysolelife.utils.FBRef
 import com.bumptech.glide.Glide
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
@@ -40,9 +41,11 @@ class FreeBoardInsideActivity : AppCompatActivity() {
     var firestore : FirebaseFirestore? = null
     private lateinit var auth: FirebaseAuth
 
-    private val commentList= mutableListOf<commentVO>()
 
-    private lateinit var commentLVAdapter: CommentLVAdapter
+
+    private val commentDataList = mutableListOf<commentVO>()
+
+    private lateinit var commentAdapter : CommentLVAdapter
 
 
 
@@ -65,6 +68,9 @@ class FreeBoardInsideActivity : AppCompatActivity() {
         getImageData(key.toString())
         getCommentData(key.toString())
 
+        commentAdapter = CommentLVAdapter(commentDataList)
+        binding.CommentListView.adapter = commentAdapter
+
 
         binding.commentBtn.setOnClickListener{
             insertComment(key)
@@ -84,66 +90,54 @@ class FreeBoardInsideActivity : AppCompatActivity() {
 
     fun getCommentData(key: String) {
 
-        commentLVAdapter = CommentLVAdapter(commentList)
-        binding.CommentListView.adapter = commentLVAdapter
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-        val db = Firebase.firestore
-        val comRef = db.collection("comment").document(key)
+                commentDataList.clear()
 
+                for (dataModel in dataSnapshot.children) {
 
-        commentList.clear()
-
-        comRef
-            .get()
-            .addOnSuccessListener { document->
-                if(document != null)
-
-                {
-                    Log.d(TAG, "DocumentComment data: ${document.data}")
-
-
-                    commentList.add(
-                        commentVO(
-                            document["comdata"].toString(),
-                            document["comtime"].toString(),
-                            document["comname"].toString()
-                        )
-                    )
-
-
+                    val item = dataModel.getValue(commentVO::class.java)
+                    commentDataList.add(item!!)
                 }
-                commentList.reverse()
-                commentLVAdapter.notifyDataSetChanged()
+
+                commentAdapter.notifyDataSetChanged()
 
 
             }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentRef.child(key).addValueEventListener(postListener)
+
 
 
     }
 
         fun insertComment(key: String) {
-            //comment
-            // -board key
-            //comment key
-            //commentData
-            val db = Firebase.firestore
-            val ComRef = db.collection("comment").document(key)
-
-            db.collection("comment")
-                .document(key)
-                .set(
+            // comment
+            //   - BoardKey
+            //        - CommentKey
+            //            - CommentData
+            //            - CommentData
+            //            - CommentData
+            FBRef.commentRef
+                .child(key)
+                .push()
+                .setValue(
                     commentVO(
                         binding.commentArea.text.toString(),
-                        FBAuth.getTime(),
-                        FBAuth.getemail()
-
-
+                        FBAuth.getemail(),
+                        FBAuth.getTime()
                     )
-
                 )
 
-            Toast.makeText(this, "Success write comment ", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
             binding.commentArea.setText("")
+
 
 
         }
