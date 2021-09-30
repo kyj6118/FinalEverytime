@@ -49,6 +49,8 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav"
         android:layout_marginTop="60dp"
+
+
    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

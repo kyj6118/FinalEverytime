@@ -46,11 +46,6 @@ class FreeBoardListAdapter(val boardList:MutableList<board>
         val time = view?.findViewById<TextView>(R.id.timeArea)
         val name = view?.findViewById<TextView>(R.id.nameArea)
 
-        if(boardList[position].email.equals(FBAuth.getemail())){
-
-            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#cbbcec"))
-        }
-
 
         val board = boardList[position]
 

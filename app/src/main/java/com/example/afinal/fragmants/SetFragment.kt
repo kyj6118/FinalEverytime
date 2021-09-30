@@ -1,5 +1,6 @@
 package com.example.afinal.fragmants
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.afinal.MainActivity
 import com.example.afinal.R
 import com.example.afinal.databinding.FragmentMapBinding
 import com.example.afinal.databinding.FragmentSetBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SetFragment : Fragment() {
     private lateinit var binding : FragmentSetBinding
@@ -24,6 +28,16 @@ class SetFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_set,container,false)
+
+        binding.logoutBtn.setOnClickListener{
+            Firebase.auth.signOut()
+
+            val intent = Intent(getActivity(), MainActivity::class.java)
+            startActivity(intent)
+
+
+
+        }
 
 
         binding.comTap.setOnClickListener{

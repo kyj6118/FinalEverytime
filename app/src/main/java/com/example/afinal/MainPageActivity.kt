@@ -20,6 +20,8 @@ class MainPageActivity : AppCompatActivity() {
         auth = Firebase.auth
 
 
+        }
+
+
 
     }
-}
