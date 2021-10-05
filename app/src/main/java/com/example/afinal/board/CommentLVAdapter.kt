@@ -39,13 +39,6 @@ class CommentLVAdapter(val commentList : MutableList<commentVO>) : BaseAdapter()
         name!!.text = commentList[position].comname
 
 
-        val commentVO = commentList[position]
-
-        title!!.text=commentVO.comdata
-        time!!.text=commentVO.comtime
-        name!!.text=commentVO.comname
-
-
         return view!!
     }
 

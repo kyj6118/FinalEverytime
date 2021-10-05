@@ -1,3 +1,4 @@
+
 package com.example.afinal.board
 
 import android.content.Intent
@@ -15,13 +16,11 @@ import com.bokchi.mysolelife.utils.FBRef
 import com.bumptech.glide.Glide
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
-import com.example.afinal.VO.board
 import com.example.afinal.VO.commentVO
 import com.example.afinal.databinding.ActivityFreeBoardInsideBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -245,6 +244,7 @@ class FreeBoardInsideActivity : AppCompatActivity() {
         })
     }
 }
+
 
 
 

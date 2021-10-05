@@ -43,6 +43,8 @@ class FreeBoardActivity : AppCompatActivity() {
         getFBBoardData()
 
 
+
+            //글쓰기 액티비티 이동
         val ImageView: ImageView = findViewById(R.id.wirteBtn)
         ImageView.setOnClickListener {
             val intent = Intent(this, BoardWriteActivity::class.java)
@@ -51,18 +53,20 @@ class FreeBoardActivity : AppCompatActivity() {
         }
         //상세정보 보기 페이
 
-        binding.boardListView.setOnItemClickListener { parent, view, position, id ->
+      /*  binding.boardListView.setOnItemClickListener { parent, view, position, id ->
 
             val intent = Intent(this, FreeBoardInsideActivity::class.java)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
-        }
+        }*/
     }
 
 
 
     private fun getFBBoardData() {
 
+
+        boardRVAdapter.notifyDataSetChanged()
         boardRVAdapter = FreeBoardListAdapter(boardList)
         binding.boardListView.adapter = boardRVAdapter
         val db = Firebase.firestore

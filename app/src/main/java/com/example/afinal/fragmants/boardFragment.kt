@@ -14,6 +14,8 @@ import com.example.afinal.board.BoardWriteActivity
 import com.example.afinal.board.FreeBoardActivity
 import com.example.afinal.databinding.FragmentBoardBinding
 import com.example.afinal.databinding.FragmentHomeBinding
+import com.example.afinal.evaluate.EvaluateBoard
+import com.example.afinal.evaluate.EvaluateBoardWrite
 
 
 class boardFragment : Fragment() {
@@ -36,6 +38,14 @@ class boardFragment : Fragment() {
            val intent = Intent(getActivity(),FreeBoardActivity::class.java)
             startActivity(intent)
         }
+
+        binding.evalBtn.setOnClickListener{
+
+            val intent = Intent(getActivity(), EvaluateBoard::class.java)
+            startActivity(intent)
+
+        }
+
 
         binding.homeTap.setOnClickListener{
             it.findNavController().navigate(R.id.action_boardFragment_to_homeFragment)

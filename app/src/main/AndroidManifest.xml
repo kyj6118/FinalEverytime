@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
-        <activity android:name=".board.FreeBoardModifyActivity"></activity>
+        <activity android:name=".evaluate.EvaluateBoardWrite"></activity>
+        <activity android:name=".evaluate.EvaluateBoardListAdater" />
+        <activity android:name=".evaluate.EvaluateBoard" />
+        <activity android:name=".board.FreeBoardModifyActivity" />
         <activity android:name=".board.FreeBoardInsideActivity" />
         <activity android:name=".board.FreeBoardActivity" />
         <activity android:name=".board.BoardWriteActivity" />
