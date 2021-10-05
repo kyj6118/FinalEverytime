@@ -25,7 +25,7 @@
             android:id="@+id/editText"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="Serch"
+            android:hint="Search"
             tools:ignore="MissingConstraints" />
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/editText"
             tools:layout_editor_absoluteY="-3dp"
-            android:hint="Serch"
+            android:hint="Search"
             android:src="@drawable/radius"
             tools:ignore="MissingConstraints" />
 

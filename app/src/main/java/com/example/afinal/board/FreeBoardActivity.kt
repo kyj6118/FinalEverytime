@@ -53,12 +53,12 @@ class FreeBoardActivity : AppCompatActivity() {
         }
         //상세정보 보기 페이
 
-      /*  binding.boardListView.setOnItemClickListener { parent, view, position, id ->
+       binding.boardListView.setOnItemClickListener { parent, view, position, id ->
 
             val intent = Intent(this, FreeBoardInsideActivity::class.java)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
-        }*/
+        }
     }
 
 

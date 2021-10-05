@@ -40,7 +40,13 @@
             android:id="@+id/classRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/ratingBarStyleIndicator"/>
+            android:layout_gravity="center"
+            android:stepSize="1"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="2.5"
+            android:progressTint="@color/maincolor"
+            />
 
 
     </LinearLayout>

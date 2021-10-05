@@ -14,6 +14,8 @@ class FBRef {
 
         val bookmarkRef = database.getReference("bookmark_list")
 
+        val EvaluBoardRef= database.getReference("evaluateboard")
+
         val boardRef = database.getReference("board")
 
         val commentRef = database.getReference("comment")

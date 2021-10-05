@@ -89,7 +89,7 @@
                 android:stepSize="1"
                 android:isIndicator="false"
                 android:numStars="5"
-                android:rating="2.5"
+                android:rating="3"
                 android:progressTint="@color/maincolor" />
 
         <Button
