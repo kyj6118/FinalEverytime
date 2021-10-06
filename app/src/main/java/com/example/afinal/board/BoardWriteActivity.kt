@@ -16,6 +16,7 @@ import com.bokchi.mysolelife.utils.FBRef
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
 import com.example.afinal.VO.board
+import com.example.afinal.VO.evaluate
 import com.example.afinal.databinding.ActivityBoardWriteBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -47,11 +48,26 @@ class BoardWriteActivity : AppCompatActivity() {
 
         binding.writeBtn.setOnClickListener {
 
+
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
             val email = FBAuth.getemail()
+
+            val key = FBRef.boardRef.push().key.toString()
+
+
+
+            FBRef.boardRef
+                .child(key)
+                .setValue(board(title, content, time, email, uid))
+
+
+
+            Toast.makeText(this, "게시글 입력 완료", Toast.LENGTH_LONG).show()
+            finish()
+
 
             Log.d(TAG, title)
             Log.d(TAG, content)
@@ -69,7 +85,7 @@ class BoardWriteActivity : AppCompatActivity() {
             // 이미지 이름에 대한 정보를 모르기 때문에
             // 이미지 이름을 문서의 key값으로 해줘서 이미지에 대한 정보를 찾기 쉽게 해놓음.
 
-            val key = FBRef.boardRef.push().key.toString()
+
 
             db.collection("board")
                 .document(key)

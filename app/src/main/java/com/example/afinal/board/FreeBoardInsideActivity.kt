@@ -209,6 +209,10 @@ class FreeBoardInsideActivity : AppCompatActivity() {
         //삭제버튼 누르
         alertDialog.findViewById<Button>(R.id.deletBtn)?.setOnClickListener{
 
+            FBRef.boardRef.child(key).removeValue()
+            Toast.makeText(this, "삭제완료", Toast.LENGTH_LONG).show()
+            finish()
+
 
             db.collection("board").document(key)
                 .delete()

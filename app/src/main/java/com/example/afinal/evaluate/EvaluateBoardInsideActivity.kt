@@ -42,15 +42,18 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_evaluate_board_inside)
 
 
+
+        key = intent.getStringExtra("key").toString()
+
+        getEvaluateBoardData(key)
+
+
         binding.boardSettingIcon.setOnClickListener {
             showDialog()
         }
 
 
 
-        key = intent.getStringExtra("key").toString()
-
-        getEvaluateBoardData(key)
 
 
     }
@@ -66,6 +69,7 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
             .setTitle("게시글 수정/삭제")
 
         val alertDialog = mBuilder.show()
+
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
             Toast.makeText(this, "수정 버튼을 눌렀습니다", Toast.LENGTH_LONG).show()
 
@@ -88,7 +92,7 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
     }
 
     private fun getEvaluateBoardData(key: String) {
-
+/*
         val db = Firebase.firestore
         val docRef = db.collection("evaluateboard").document(key)
 
@@ -129,24 +133,28 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
-            }
-
-     /*   val postListener = object : ValueEventListener {
+            }*/
+        val postListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 try {
 
+                    val rating = findViewById<RatingBar>(R.id.classRating)
                     val dataModel = dataSnapshot.getValue(evaluate::class.java)
 
-                    binding.titleArea.text = dataModel!!.title
-                    binding.professorArea.text = dataModel!!.proffesor
+                    binding.classArea.text = dataModel!!.title
+                    binding.professorArea.text = dataModel!!.professor
                     binding.contentArea.text = dataModel!!.contents
                     binding.classRating.rating = dataModel!!.rating.toString().toFloat()
 
 
                     val myUid = FBAuth.getemail()
                     val writerUid = dataModel.email
+
+                    Log.d(TAG, "getemail" +  FBAuth.getemail() )
+                    Log.d(TAG, "writeUid" +  writerUid )
+
 
                     if (myUid.equals(writerUid)) {
                         Log.d(TAG, "내가 쓴 글")
@@ -156,7 +164,7 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
                     }
 
                 } catch (e: Exception) {
-
+                    Log.d(TAG, "getemail" +  FBAuth.getemail() )
                     Log.d(TAG, "삭제완료")
 
                 }
@@ -168,7 +176,7 @@ class EvaluateBoardInsideActivity : AppCompatActivity() {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
-        FBRef.boardRef.child(key).addValueEventListener(postListener)*/
+        FBRef.EvaluBoardRef.child(key).addValueEventListener(postListener)
     }
 }
 

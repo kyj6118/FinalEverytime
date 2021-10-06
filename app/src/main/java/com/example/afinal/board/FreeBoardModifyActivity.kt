@@ -7,9 +7,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bokchi.mysolelife.utils.FBRef
 import com.bumptech.glide.Glide
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
+import com.example.afinal.VO.board
 import com.example.afinal.databinding.ActivityFreeBoardModifyBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.ktx.firestore
@@ -55,6 +57,15 @@ class FreeBoardModifyActivity : AppCompatActivity() {
 
         Log.d(TAG, title)
         Log.d(TAG, content)
+
+        FBRef.boardRef
+            .child(key)
+            .setValue(
+                board(binding.titleArea.text.toString(),
+                    binding.contentArea.text.toString(),
+                    FBAuth.getTime(),email,uid)
+            )
+
 
         val board = hashMapOf(
             "title" to title,

@@ -1,17 +1,24 @@
 package com.example.afinal.board
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bokchi.mysolelife.utils.FBRef
 import com.example.afinal.R
 import com.example.afinal.R.layout.activity_free_board
 import com.example.afinal.VO.board
+import com.example.afinal.VO.evaluate
 import com.example.afinal.databinding.ActivityFreeBoardBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -64,16 +71,45 @@ class FreeBoardActivity : AppCompatActivity() {
 
 
     private fun getFBBoardData() {
-
-
-        boardRVAdapter.notifyDataSetChanged()
         boardRVAdapter = FreeBoardListAdapter(boardList)
         binding.boardListView.adapter = boardRVAdapter
         val db = Firebase.firestore
 
         boardList.clear()
 
-        db.collection("board")
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                boardList.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    Log.d(ContentValues.TAG, dataModel.toString())
+//                    dataModel.key
+
+                    val item = dataModel.getValue(board::class.java)
+                    boardList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
+
+                }
+
+
+                boardKeyList.reverse()
+                boardList.reverse()
+                boardRVAdapter.notifyDataSetChanged()
+
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.boardRef.addValueEventListener(postListener)
+
+        /*db.collection("board")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -95,7 +131,7 @@ class FreeBoardActivity : AppCompatActivity() {
                 boardList.reverse()
                 boardRVAdapter.notifyDataSetChanged()
 
-            }
+            }*/
     }
 }
 

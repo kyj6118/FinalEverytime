@@ -34,14 +34,14 @@ class EvaluateListAdater (val evaluateList:MutableList<evaluate>):BaseAdapter(){
 
 
         val title = view?.findViewById<TextView>(R.id.titleArea)
-        val content = view?.findViewById<TextView>(R.id.contentArea)
+        val professor = view?.findViewById<TextView>(R.id.professorArea)
         val rating = view?.findViewById<RatingBar>(R.id.classRating)
 
         val evaluate=evaluateList[position]
 
 
         title!!.text=evaluate.title
-        content!!.text=evaluate.professor
+        professor!!.text=evaluate.professor
         rating!!.rating= evaluate.rating!!
 
         return view!!

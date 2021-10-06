@@ -61,7 +61,7 @@ class EvaluateBoardWrite : AppCompatActivity(){
 
             FBRef.EvaluBoardRef
                 .child(key)
-                .setValue(evaluate(title, content, rating, professor, email, uid))
+                .setValue(evaluate(title, professor, rating, content, email, uid))
 
 
 
