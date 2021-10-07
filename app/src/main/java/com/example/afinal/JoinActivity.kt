@@ -98,7 +98,7 @@ class JoinActivity : AppCompatActivity() {
                                  "uid" to uid
                             )
 
-                            db.collection("register").document(email)
+                            db.collection("user").document(email)
                                 .set(user)
                                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }

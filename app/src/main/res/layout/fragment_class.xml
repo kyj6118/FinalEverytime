@@ -41,7 +41,7 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="Tus"
+                    android:text="Tue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -49,7 +49,7 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="Wend"
+                    android:text="Wed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -57,7 +57,7 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="Tur"
+                    android:text="Thur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"

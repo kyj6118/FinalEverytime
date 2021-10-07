@@ -116,7 +116,7 @@ class googleLogin : AppCompatActivity() {
                     userInfo.uni="no"
 
 
-                    db.collection("register").document(userInfo.id.toString())
+                    db.collection("user").document(userInfo.id.toString())
                         .set(userInfo)
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
