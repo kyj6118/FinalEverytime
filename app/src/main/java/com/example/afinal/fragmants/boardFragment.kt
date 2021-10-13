@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.afinal.MainActivity
 import com.example.afinal.R
-import com.example.afinal.board.BoardWriteActivity
 import com.example.afinal.board.FreeBoardActivity
 import com.example.afinal.databinding.FragmentBoardBinding
 import com.example.afinal.databinding.FragmentHomeBinding

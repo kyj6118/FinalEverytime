@@ -58,7 +58,7 @@ class FreeBoardModifyActivity : AppCompatActivity() {
         Log.d(TAG, title)
         Log.d(TAG, content)
 
-        FBRef.boardRef
+       /* FBRef.boardRef
             .child(key)
             .setValue(
                 board(binding.titleArea.text.toString(),
@@ -66,7 +66,7 @@ class FreeBoardModifyActivity : AppCompatActivity() {
                     FBAuth.getTime(),email,uid)
             )
 
-
+*/
         val board = hashMapOf(
             "title" to title,
             "contents" to content,

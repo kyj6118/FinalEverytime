@@ -1,22 +1,29 @@
 package com.example.afinal.board
 
+import android.R.attr
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.nfc.Tag
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bokchi.mysolelife.utils.FBRef
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.FitCenter
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.example.afinal.R
 import com.example.afinal.VO.FBAuth
 import com.example.afinal.VO.board
-import com.example.afinal.VO.evaluate
 import com.example.afinal.databinding.ActivityBoardWriteBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,8 +32,14 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
+import java.net.FileNameMap
+import java.util.jar.Attributes
 
+
+/*
 class BoardWriteActivity : AppCompatActivity() {
+
+    private val GET_GALLERY_IMAGE = 200
 
 
     private val TAG = BoardWriteActivity::class.java.simpleName
@@ -37,6 +50,7 @@ class BoardWriteActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardWriteBinding
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -44,9 +58,13 @@ class BoardWriteActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         firestore = FirebaseFirestore.getInstance()
+
         val db = Firebase.firestore
 
-        binding.writeBtn.setOnClickListener {
+
+
+
+    binding.writeBtn.setOnClickListener {
 
 
             val title = binding.titleArea.text.toString()
@@ -56,6 +74,7 @@ class BoardWriteActivity : AppCompatActivity() {
             val email = FBAuth.getemail()
 
             val key = FBRef.boardRef.push().key.toString()
+            // val image1 =
 
 
 
@@ -77,7 +96,7 @@ class BoardWriteActivity : AppCompatActivity() {
                 "contents" to content,
                 "id" to uid,
                 "email" to email,
-                "time" to time
+                "time" to time,
 
             )
             // 파이어베이스 store에 이미지를 저장하고 싶습니다
@@ -99,7 +118,7 @@ class BoardWriteActivity : AppCompatActivity() {
             Toast.makeText(this, "게시글 입력 완료", Toast.LENGTH_LONG).show()
 
             if(isImageUpload == true) {
-                imageUpload(key)
+                imageUpload()
             }
 
             finish()
@@ -107,28 +126,52 @@ class BoardWriteActivity : AppCompatActivity() {
 
         }
 
-        binding.imageArea.setOnClickListener {
+        binding.imageArea1.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
+            isImageUpload = true
+        }
+        binding.imageArea2.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 101)
+            isImageUpload = true
+        }
+        binding.imageArea3.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 102)
+            isImageUpload = true
+        }
+        binding.imageArea4.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 103)
             isImageUpload = true
         }
 
     }
 
-    private fun imageUpload(key : String){
+    private fun imageUpload(){
         // Get the data from an ImageView as bytes
+
 
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png")
+        val mountainsRef = storageRef.child("")
 
-        val imageView = binding.imageArea
+
+
+        val imageView = binding.imageArea1
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
         val bitmap = (imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
+
+
+
+
+
+
 
         var uploadTask = mountainsRef.putBytes(data)
         uploadTask.addOnFailureListener {
@@ -141,12 +184,37 @@ class BoardWriteActivity : AppCompatActivity() {
     }
 
 
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+         super.onActivityResult(requestCode, resultCode, data)
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == RESULT_OK && requestCode == 100) {
-            binding.imageArea.setImageURI(data?.data)
-        }
 
-    }
-}
+         if(resultCode == RESULT_OK && requestCode == 100) {
+
+             binding.imageArea1.setImageURI(data?.data)
+
+
+
+         }
+
+             if(resultCode == RESULT_OK && requestCode == 101) {
+
+                 binding.imageArea2.setImageURI(data?.data)
+             }
+
+         if(resultCode == RESULT_OK && requestCode == 102) {
+             binding.imageArea3.setImageURI(data?.data)
+         }
+
+         if(resultCode == RESULT_OK && requestCode == 103) {
+             binding.imageArea4.setImageURI(data?.data)
+         }
+
+
+
+
+
+     }
+
+
+
+}*/

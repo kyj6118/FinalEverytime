@@ -14,6 +14,7 @@ import com.example.afinal.R.layout.activity_free_board
 import com.example.afinal.VO.board
 import com.example.afinal.VO.evaluate
 import com.example.afinal.databinding.ActivityFreeBoardBinding
+import com.example.afinal.instagram.AddArticleActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -54,9 +55,9 @@ class FreeBoardActivity : AppCompatActivity() {
             //글쓰기 액티비티 이동
         val ImageView: ImageView = findViewById(R.id.wirteBtn)
         ImageView.setOnClickListener {
-            val intent = Intent(this, BoardWriteActivity::class.java)
+         /*   val intent = Intent(this, AddArticleActivity::class.java)
             startActivity(intent)
-
+*/
         }
         //상세정보 보기 페이
 

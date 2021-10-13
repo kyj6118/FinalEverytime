@@ -4,4 +4,5 @@ data class board(var title : String? = null,
                  var contents : String? =null,
                  var time : String?=null,
                  var email:String?=null,
-                 var uid :String?=null)
+                 var uid :String?=null,
+                val imageUrlList: List<String>)
