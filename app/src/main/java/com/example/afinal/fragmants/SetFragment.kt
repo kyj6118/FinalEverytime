@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.afinal.MainActivity
 import com.example.afinal.R
-import com.example.afinal.databinding.FragmentMapBinding
 import com.example.afinal.databinding.FragmentSetBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

@@ -1,3 +1,4 @@
+/*
 package com.example.afinal.instagram
 import android.net.Uri
 
@@ -8,4 +9,4 @@ data class GalleryPhoto(
     val date: String,
     val size: Int,
     var isSelected: Boolean = false
-)
+)*/

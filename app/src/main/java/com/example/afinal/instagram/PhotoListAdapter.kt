@@ -1,3 +1,4 @@
+/*
 package fastcampus.aop.part5.chapter04.adapter
 
 import android.net.Uri
@@ -18,9 +19,11 @@ class PhotoListAdapter(
         private val binding: ViewholderGalleryPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-      /*  fun bindData(data: Uri) = with(binding) {
+      */
+/*  fun bindData(data: Uri) = with(binding) {
             binding.photoImageView.loadCenterCrop(data.toString(), 8f)
-        }*/
+        }*//*
+
 
         fun bindViews(data: Uri) = with(binding) {
             checkButton.setOnClickListener {
@@ -47,4 +50,5 @@ class PhotoListAdapter(
         notifyDataSetChanged()
     }
 }
+*/
 

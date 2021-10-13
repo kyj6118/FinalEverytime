@@ -1,3 +1,4 @@
+/*
 package com.example.afinal.instagram
 
 import androidx.annotation.IdRes
@@ -17,4 +18,4 @@ sealed class GalleryState {
         val photoList: List<GalleryPhoto>
     ): GalleryState()
 
-}
+}*/

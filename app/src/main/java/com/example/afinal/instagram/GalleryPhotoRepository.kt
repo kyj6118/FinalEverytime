@@ -1,3 +1,4 @@
+/*
 package com.example.afinal.instagram
 
 import android.content.ContentUris
@@ -54,4 +55,4 @@ internal class GalleryPhotoRepository(
 
         return@withContext galleryPhotoList
     }
-}
+}*/

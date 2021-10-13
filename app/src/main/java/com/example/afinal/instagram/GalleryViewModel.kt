@@ -1,10 +1,13 @@
+/*
 package com.example.afinal.instagram
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+*/
 
+/*
 class GalleryViewModel : ViewModel(){
     private val galleryPhotoRepository by lazy { GalleryPhotoRepository(appContext!!) }
 
@@ -54,4 +57,4 @@ class GalleryViewModel : ViewModel(){
         )
     }
 
-}
+}*/

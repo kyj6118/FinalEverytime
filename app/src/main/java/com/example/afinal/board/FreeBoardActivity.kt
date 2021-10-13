@@ -14,7 +14,6 @@ import com.example.afinal.R.layout.activity_free_board
 import com.example.afinal.VO.board
 import com.example.afinal.VO.evaluate
 import com.example.afinal.databinding.ActivityFreeBoardBinding
-import com.example.afinal.instagram.AddArticleActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot

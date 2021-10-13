@@ -17,20 +17,17 @@
             android:id="@+id/action_homeFragment_to_classFragment"
             app:destination="@id/classFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_setFragment"
             app:destination="@id/setFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/classFragment"
         android:name="com.example.afinal.fragmants.ClassFragment"
         android:label="fragment_class"
         tools:layout="@layout/fragment_class" >
-        <action
-            android:id="@+id/action_classFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
         <action
             android:id="@+id/action_classFragment_to_setFragment"
             app:destination="@id/setFragment" />
@@ -40,6 +37,9 @@
         <action
             android:id="@+id/action_classFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_classFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/boardFragment"
@@ -53,29 +53,11 @@
             android:id="@+id/action_boardFragment_to_classFragment"
             app:destination="@id/classFragment" />
         <action
-            android:id="@+id/action_boardFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
             android:id="@+id/action_boardFragment_to_setFragment"
             app:destination="@id/setFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mapFragment"
-        android:name="com.example.afinal.fragmants.MapFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
         <action
-            android:id="@+id/action_mapFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_classFragment"
-            app:destination="@id/classFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_boardFragment"
-            app:destination="@id/boardFragment" />
-        <action
-            android:id="@+id/action_mapFragment_to_setFragment"
-            app:destination="@id/setFragment" />
+            android:id="@+id/action_boardFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/setFragment"
@@ -89,10 +71,27 @@
             android:id="@+id/action_setFragment_to_classFragment"
             app:destination="@id/classFragment" />
         <action
-            android:id="@+id/action_setFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
             android:id="@+id/action_setFragment_to_boardFragment"
             app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_setFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.afinal.fragmants.MapFragment"
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_classFragment"
+            app:destination="@id/classFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_setFragment"
+            app:destination="@id/setFragment" />
     </fragment>
 </navigation>

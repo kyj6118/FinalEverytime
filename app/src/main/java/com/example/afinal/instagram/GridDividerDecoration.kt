@@ -1,3 +1,4 @@
+/*
 package com.example.afinal.instagram
 
 import android.content.Context
@@ -24,9 +25,11 @@ class GridDividerDecoration internal constructor(context: Context, @DrawableRes 
         mInsets = 1
     }
 
-    /**
+    */
+/**
      * Draw dividers at each expected grid interval
-     */
+     *//*
+
     private fun drawVertical(c: Canvas, parent: RecyclerView) {
         if (parent.childCount == 0) return
         val left = parent.paddingLeft
@@ -45,9 +48,11 @@ class GridDividerDecoration internal constructor(context: Context, @DrawableRes 
         }
     }
 
-    /**
+    */
+/**
      * Draw dividers to the right of each child view
-     */
+     *//*
+
     private fun drawHorizontal(c: Canvas, parent: RecyclerView) {
         val top = parent.paddingTop
         val bottom = parent.height - parent.paddingBottom
@@ -74,4 +79,4 @@ class GridDividerDecoration internal constructor(context: Context, @DrawableRes 
     companion object {
         private val ATTRS = intArrayOf(android.R.attr.listDivider)
     }
-}
+}*/

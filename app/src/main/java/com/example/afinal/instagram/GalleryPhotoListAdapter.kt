@@ -1,3 +1,4 @@
+/*
 package com.example.afinal.instagram
 
 import android.view.LayoutInflater
@@ -19,7 +20,8 @@ class GalleryPhotoListAdapter(
         private val binding: ViewholderGalleryPhotoItemBinding
     ) : ViewHolder(binding.root) {
 
-    /*    fun bindData(data: GalleryPhoto) = with(binding) {
+    */
+/*    fun bindData(data: GalleryPhoto) = with(binding) {
             photoImageView.load(data.uri.toString(), 8f)
             checkButton.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -30,7 +32,8 @@ class GalleryPhotoListAdapter(
                         R.drawable.ic_check_disabled
                 )
             )
-        }*/
+        }*//*
+
 
         fun bindViews(data: GalleryPhoto) = with(binding) {
             root.setOnClickListener {
@@ -56,4 +59,4 @@ class GalleryPhotoListAdapter(
         this.galleryPhotoList = galleryPhotoList
         notifyDataSetChanged()
     }
-}
+}*/
